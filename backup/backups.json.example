@@ -1,0 +1,17 @@
+{
+	"backups":{
+		"base1-example":{
+			"host": "127.0.0.1",
+			"databases": "database-name",
+			"user": "root",
+			"password": ""
+			
+		},
+		"base2-example":{
+			"host": "127.0.0.1",
+			"databases": "database-name1, database-name2",
+			"user": "root",
+			"password": ""
+		}
+	}
+}
