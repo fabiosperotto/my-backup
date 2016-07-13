@@ -33,6 +33,8 @@ $ vim backup/backups.json
 $ php run.php
 ```
 
+[![asciicast](https://asciinema.org/a/4qswbn32t0qaa2yqa93bty4gn.png)](https://asciinema.org/a/4qswbn32t0qaa2yqa93bty4gn)
+
 ## Créditos
 Thanks to [Sebastian](https://github.com/sebastianfeldmann/phpbu) for this amazing PHPBU.
 
