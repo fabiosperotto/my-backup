@@ -4,3 +4,4 @@ idea
 .project
 .settings
 /composer.lock
+/vendor/**/.git
