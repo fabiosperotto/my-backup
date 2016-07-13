@@ -1,0 +1,54 @@
+#!/usr/bin/env php
+<?php
+if (__FILE__ == realpath($GLOBALS['_SERVER']['SCRIPT_NAME'])) {
+    $phar    = realpath($GLOBALS['_SERVER']['SCRIPT_NAME']);
+    $execute = true;
+} else {
+    $files   = get_included_files();
+    $phar    = $files[0];
+    $execute = false;
+}
+
+define('__PHPBU_PHAR__', str_replace(DIRECTORY_SEPARATOR, '/', $phar));
+define('__PHPBU_PHAR_ROOT__', 'phar://___PHAR___');
+
+spl_autoload_register(
+  function ($class)
+  {
+      static $classes = NULL;
+
+      if ($classes === NULL) {
+          $classes = array(
+            ___CLASSLIST___
+          );
+      }
+
+      $class = strtolower($class);
+
+      if (isset($classes[$class])) {
+          require __PHPBU_PHAR_ROOT__ . $classes[$class];
+      }
+  }
+);
+
+Phar::mapPhar('___PHAR___');
+
+if ($execute) {
+    if (isset($_SERVER['argv'][1]) && $_SERVER['argv'][1] == '--manifest') {
+        print file_get_contents(__PHPBU_PHAR_ROOT__ . '/manifest.txt');
+        exit;
+    }
+
+    // aws functions
+    require __PHPBU_PHAR_ROOT__ . '/lib/aws-sdk/functions.php';
+    // guzzle functions
+    require __PHPBU_PHAR_ROOT__ . '/lib/guzzlehttp/guzzle/functions_include.php';
+    require __PHPBU_PHAR_ROOT__ . '/lib/guzzlehttp/psr7/functions_include.php';
+    require __PHPBU_PHAR_ROOT__ . '/lib/guzzlehttp/promises/functions_include.php';
+    // swift dependency init
+    require __PHPBU_PHAR_ROOT__ . '/lib/swiftmailer/swift_init.php';
+
+    phpbu\App\Cmd::main();
+}
+
+__HALT_COMPILER();

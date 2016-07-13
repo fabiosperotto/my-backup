@@ -1,0 +1,14 @@
+*.phar
+.buildpath
+.idea
+.project
+.settings
+/backup/*
+/build/coverage
+/build/logs
+/build/phar
+/composer.lock
+/phpbu.xml
+/phpbu.json
+/vendor/
+cache.properties

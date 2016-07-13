@@ -1,0 +1,17 @@
+{
+  "type": "mysqldump",
+  "option": {
+    "host": "myHost",
+    "user": "myUserName",
+    "password": "mySecretPassword",
+    "databases": "myDB1,mydB2",
+    "tables": "myTable1,myTable2,myTable3",
+    "ignoreTables": "myTableToIgnore1,myTableToIgnore2",
+    "structureOnly": "myTableWithoutData1,myTableWithoutData2",
+    "quick": "true",
+    "lockTables": "true",
+    "compress": "true",
+    "extendedInsert": "true",
+    "hexBlob": "true"
+  }
+}
